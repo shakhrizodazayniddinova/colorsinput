@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        .modalDiv{
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.1);
+            transition: transform 0.4s, top 0.4s;
+            z-index: 1;
+        }
+        .open-popup{
+            visibility: visible;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .containerColors{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+        }
+        .containerColors .colorAndDeleteBox{
+            background-position: center !important;
+            background-size: cover !important;
+        }
+    </style>
+
+</head>
+<body onkeyup="addcolorKeyup(event)" onload="openModal()">
+
+    <!-- MODAL -->
+    <div id="myModal">
+        <div class="modalDiv w-2/5 h-2/4 bg-black rounded-md text-center px-8 text-white bg-cyan-950" id="modal">
+            <button id="closeModal" class="closeModal float-right bg-transparent text-3xl">&times;</button>
+            <div class="flex flex-col justify-center items-center h-2/4">
+                <h2 class="text-2xl mt-16">About this site</h2>
+                <p class="text-lg mt-10">This site makes extensive use of Tailwind, CSS, and JavaScript. you can write the color code, name, linear-gradient and image link and press the '+' button or the 'enter' keyboard and it will output the background of the color or image below. and delete all, go back 1 time and search are also available.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container flex flex-col py-28 text-center gap-6" id="container">
+        <h1 class="font-semibold text-2xl">Enter color code or image link</h1>
+
+        <!-- enter color space -->
+        <div class="containerInpBtn">
+            <input type="text" class="colorInput py-1 px-4 w-80 border rounded-md" placeholder="Enter color name or image link" id="colorInp"/>
+            <button class="inputBtn py-1 px-3 bg-black text-white rounded-md" id="plusColorBtn" title="press to 'Enter' key"><i class="fa-solid fa-plus"></i></button>
+            <button class="searchColor py-1 px-3 bg-black text-white rounded-md" id="searchColor"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+
+        <!-- controls -->
+        <div class="controls flex gap-6 justify-center items-center">
+            <div class="removeAllColor">
+                <button class="removeAllBtn text-red-700 border border-red-700 px-3 py-1 rounded-md" id="removeAllBtn" title="remove all"><i class="fa-solid fa-trash"></i> remove all</button>
+            </div>
+            <div class="backColor">
+                <button class="backColor text-green-800 border border-green-800 px-3 py-1 rounded-md" id="backColor" title="one back"><i class="fa-solid fa-backward"></i> back</button>
+            </div>
+        </div>
+ 
+        <!-- colors container -->
+        <div class="containerColors gap-5 px-20 py-14" id="colorsBox">
+            <!-- <div id="1">
+                <div class="colorAndDeleteBox flex justify-end items-end w-72 h-44 rounded-lg shadow-2xl px-3 py-2">
+                    <button class="colorRemoveBtn float-right text-red-700" id="colorRemoveBtn"><i class="fa-solid fa-trash"></i></button>
+                </div>
+            </div> -->
+        </div>
+    </div>
+    
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="./modal.js"></script>
+<script src="./index.js"></script>
+</body>
+</html>
